@@ -13,23 +13,54 @@ namespace ListNumsActions
             {
                 string[] cmd = Console.ReadLine().Split().ToArray();
                 string command = cmd[0];
+
                 if (command.ToLower() == "finish")
                 {
                     break;
                 }
+
                 switch (command)
                 {
                     case "ins":
-                        //TODO
+                        nums.Insert(int.Parse(cmd[1]), int.Parse(cmd[2]));
                         break;
+
                     case "del":
-                        //TODO
+                        nums.Remove(int.Parse(cmd[1]));
                         break;
+
                     case "contains":
-                        //TODO
-                        break;
+                        if (nums.Contains(int.Parse(cmd[1])))
+                        {
+                            Console.WriteLine("Yes");
+                        }
+                        else
+                        {
+                            Console.WriteLine("No");
+                        }
+                            break;
                     case "remove":
-                        //TODO
+                        int index = int.Parse(cmd[1]);
+                        if (index >= 0 && index < nums.Count)
+                        {
+                            nums.RemoveAt(index);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid index");
+                        }
+                        break;
+
+                    case "add":
+                        int num1 = int.Parse(cmd[1]);
+                        int num2 = int.Parse(cmd[2]);
+                        nums.Add(num1 + num2);
+                        break;
+
+                    case "large":
+                        int number = int.Parse(cmd[1]);
+                        List<int> result = nums.Where(x => x > number).ToList();
+                        Console.WriteLine(string.Join(" ", result));
                         break;
                     case "countl":
                         int numCount = int.Parse(cmd[1]);
