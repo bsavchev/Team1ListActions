@@ -62,7 +62,25 @@ namespace ListNumsActions
                         List<int> result = nums.Where(x => x > number).ToList();
                         Console.WriteLine(string.Join(" ", result));
                         break;
-
+                    case "countl":
+                        int numCount = int.Parse(cmd[1]);
+                        int count = nums.Count(x => x > numCount);
+                        Console.WriteLine(count);
+                        break;
+                    case "cut":
+                        int cutCount = int.Parse(cmd[1]);
+                        if (cutCount >= nums.Count)
+                        {
+                            nums.Clear();
+                        }
+                        else
+                        {
+                            nums = nums.Skip(cutCount).ToList();
+                        }
+                        break;
+                    case "print":
+                        Console.WriteLine(string.Join(" ", nums));
+                        break;
                     default:
                         break;
                 }
