@@ -22,17 +22,23 @@ namespace ListNumsActions
                 switch (command)
                 {
                     case "ins":
-                        //TODO
+                        nums.Insert(int.Parse(cmd[1]), int.Parse(cmd[2]));
                         break;
 
                     case "del":
-                        //TODO
+                        nums.Remove(int.Parse(cmd[1]));
                         break;
 
                     case "contains":
-                        //TODO
-                        break;
-
+                        if (nums.Contains(int.Parse(cmd[1])))
+                        {
+                            Console.WriteLine("Yes");
+                        }
+                        else
+                        {
+                            Console.WriteLine("No");
+                        }
+                            break;
                     case "remove":
                         int index = int.Parse(cmd[1]);
                         if (index >= 0 && index < nums.Count)
